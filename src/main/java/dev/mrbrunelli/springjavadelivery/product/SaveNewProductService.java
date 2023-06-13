@@ -12,8 +12,8 @@ public class SaveNewProductService {
     }
 
     @Transactional
-    public Product execute(SaveNewProductDTO dto) {
+    public ProductView execute(NewProductDTO dto) {
         Product product = dto.toProduct();
-        return repository.save(product);
+        return ProductView.fromProduct(repository.save(product));
     }
 }
