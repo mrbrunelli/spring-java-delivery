@@ -1,0 +1,7 @@
+CREATE TABLE product (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    price NUMERIC(10,2) NOT NULL,
+    stock INTEGER NOT NULL,
+    PRIMARY KEY(id)
+);
