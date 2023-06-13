@@ -3,5 +3,6 @@ CREATE TABLE product (
     name VARCHAR(255) NOT NULL,
     price NUMERIC(10,2) NOT NULL,
     stock INTEGER NOT NULL,
+    is_featured BOOLEAN NOT NULL,
     PRIMARY KEY(id)
 );
