@@ -1,5 +1,9 @@
 package dev.mrbrunelli.springjavadelivery.product;
 
+import dev.mrbrunelli.springjavadelivery.product.service.GetProductsService;
+import dev.mrbrunelli.springjavadelivery.product.service.SaveNewProductService;
+import dev.mrbrunelli.springjavadelivery.product.dto.NewProductDTO;
+import dev.mrbrunelli.springjavadelivery.product.dto.ProductView;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +15,11 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
     private final SaveNewProductService saveNewProductService;
-    private final ProductRepository repository;
+    private final GetProductsService getProductsService;
 
-    public ProductController(SaveNewProductService saveNewProductService, ProductRepository repository) {
+    public ProductController(SaveNewProductService saveNewProductService, GetProductsService getProductsService) {
         this.saveNewProductService = saveNewProductService;
-        this.repository = repository;
+        this.getProductsService = getProductsService;
     }
 
     @PostMapping
@@ -25,14 +29,8 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> getAll() {
-        List<Product> products = repository.findAll();
-        return ResponseEntity.status(HttpStatus.OK).body(products);
-    }
-
-    @GetMapping("/featured")
-    public ResponseEntity<List<Product>> getAllFeatured() {
-        List<Product> products = repository.findByIsFeaturedTrue();
+    public ResponseEntity<List<ProductView>> getAll(@RequestParam(required = false) Boolean isFeatured) {
+        List<ProductView> products = getProductsService.execute(isFeatured);
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
 }

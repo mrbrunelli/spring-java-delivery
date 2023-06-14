@@ -1,5 +1,6 @@
-package dev.mrbrunelli.springjavadelivery.product;
+package dev.mrbrunelli.springjavadelivery.product.dto;
 
+import dev.mrbrunelli.springjavadelivery.product.Product;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;

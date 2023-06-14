@@ -1,5 +1,9 @@
-package dev.mrbrunelli.springjavadelivery.product;
+package dev.mrbrunelli.springjavadelivery.product.service;
 
+import dev.mrbrunelli.springjavadelivery.product.Product;
+import dev.mrbrunelli.springjavadelivery.product.ProductRepository;
+import dev.mrbrunelli.springjavadelivery.product.dto.NewProductDTO;
+import dev.mrbrunelli.springjavadelivery.product.dto.ProductView;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

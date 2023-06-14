@@ -1,7 +1,11 @@
-package dev.mrbrunelli.springjavadelivery.product;
+package dev.mrbrunelli.springjavadelivery.product.dto;
 
+import dev.mrbrunelli.springjavadelivery.product.Product;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
@@ -20,5 +24,12 @@ public class ProductView {
         productView.setStock(product.getStock());
         productView.setIsFeatured(product.getIsFeatured());
         return productView;
+    }
+
+    public static List<ProductView> fromProductList(List<Product> products) {
+        return products
+                .stream()
+                .map(ProductView::fromProduct)
+                .collect(Collectors.toList());
     }
 }
