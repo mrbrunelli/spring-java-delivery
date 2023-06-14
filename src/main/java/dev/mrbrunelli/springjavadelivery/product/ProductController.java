@@ -23,7 +23,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductView> create(@Valid @RequestBody NewProductDTO dto) {
+    public ResponseEntity<ProductView> save(@Valid @RequestBody NewProductDTO dto) {
         ProductView newProduct = saveNewProduct.execute(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
     }

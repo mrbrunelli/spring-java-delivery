@@ -4,11 +4,13 @@ import dev.mrbrunelli.springjavadelivery.catalog.Catalog;
 import dev.mrbrunelli.springjavadelivery.catalog.CatalogRepository;
 import dev.mrbrunelli.springjavadelivery.catalog.dto.CatalogView;
 import dev.mrbrunelli.springjavadelivery.catalog.dto.NewCatalogDTO;
+import org.springframework.stereotype.Service;
 
-public class CreateNewCatalog {
+@Service
+public class SaveNewCatalog {
     private final CatalogRepository repository;
 
-    public CreateNewCatalog(CatalogRepository repository) {
+    public SaveNewCatalog(CatalogRepository repository) {
         this.repository = repository;
     }
 
