@@ -2,6 +2,7 @@ package dev.mrbrunelli.springjavadelivery.catalog.dto;
 
 import dev.mrbrunelli.springjavadelivery.catalog.Catalog;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.List;
 import java.util.stream.Collectors;
