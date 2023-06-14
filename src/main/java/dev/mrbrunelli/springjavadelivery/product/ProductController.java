@@ -30,6 +30,9 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<List<ProductView>> getAll(@RequestParam(required = false) Boolean isFeatured) {
+        if (isFeatured == null) {
+            isFeatured = false;
+        }
         List<ProductView> products = getProducts.execute(isFeatured);
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
