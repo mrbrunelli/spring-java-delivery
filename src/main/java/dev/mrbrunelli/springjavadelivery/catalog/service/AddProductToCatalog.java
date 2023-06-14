@@ -2,7 +2,6 @@ package dev.mrbrunelli.springjavadelivery.catalog.service;
 
 import dev.mrbrunelli.springjavadelivery.catalog.Catalog;
 import dev.mrbrunelli.springjavadelivery.catalog.CatalogRepository;
-import dev.mrbrunelli.springjavadelivery.catalog.dto.CatalogView;
 import dev.mrbrunelli.springjavadelivery.catalog.exception.CatalogNotFound;
 import dev.mrbrunelli.springjavadelivery.product.Product;
 import dev.mrbrunelli.springjavadelivery.product.ProductRepository;
@@ -10,7 +9,6 @@ import dev.mrbrunelli.springjavadelivery.product.exception.ProductNotFound;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 
 @Service
 public class AddProductToCatalog {
@@ -28,6 +26,7 @@ public class AddProductToCatalog {
         Product product = productRepository.findById(productId).orElseThrow(ProductNotFound::new);
         catalog.addProduct(product);
         product.addCatalog(catalog);
+        // TODO Check if the row exists in the table catalog_product or catch the ConstraintViolationException?
         catalogRepository.save(catalog);
         productRepository.save(product);
     }

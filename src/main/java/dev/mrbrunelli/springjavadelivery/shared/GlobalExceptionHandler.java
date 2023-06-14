@@ -1,4 +1,4 @@
-package dev.mrbrunelli.springjavadelivery.config;
+package dev.mrbrunelli.springjavadelivery.shared;
 
 import dev.mrbrunelli.springjavadelivery.catalog.exception.CatalogNotFound;
 import dev.mrbrunelli.springjavadelivery.product.exception.ProductNotFound;
@@ -17,6 +17,12 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ExceptionView handleServerError(Exception ex, HttpServletRequest req) {
         return ExceptionView.make(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage(), req);
+    }
+
+    @ExceptionHandler(ConflictException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ExceptionView handleConflict(ConflictException ex, HttpServletRequest req) {
+        return ExceptionView.make(HttpStatus.CONFLICT, ex.getMessage(), req);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

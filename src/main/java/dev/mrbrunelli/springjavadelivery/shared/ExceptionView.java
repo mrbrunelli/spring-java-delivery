@@ -1,4 +1,4 @@
-package dev.mrbrunelli.springjavadelivery.config;
+package dev.mrbrunelli.springjavadelivery.shared;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
