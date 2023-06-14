@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class SaveNewProductService {
+public class SaveNewProduct {
     private final ProductRepository repository;
 
-    public SaveNewProductService(ProductRepository repository) {
+    public SaveNewProduct(ProductRepository repository) {
         this.repository = repository;
     }
 
