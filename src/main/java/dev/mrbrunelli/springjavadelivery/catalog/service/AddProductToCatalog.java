@@ -24,18 +24,10 @@ public class AddProductToCatalog {
 
     @Transactional
     public void execute(Long catalogId, Long productId) {
-        Optional<Catalog> catalogOptional = catalogRepository.findById(catalogId);
-        if (catalogOptional.isEmpty()) {
-            throw new CatalogNotFound();
-        }
-        Optional<Product> productOptional = productRepository.findById(productId);
-        if (productOptional.isEmpty()) {
-            throw new ProductNotFound();
-        }
-        Catalog catalog = catalogOptional.get();
-        Product product = productOptional.get();
-        catalog.getProducts().add(product);
-        product.getCatalogs().add(catalog);
+        Catalog catalog = catalogRepository.findById(catalogId).orElseThrow(CatalogNotFound::new);
+        Product product = productRepository.findById(productId).orElseThrow(ProductNotFound::new);
+        catalog.addProduct(product);
+        product.addCatalog(catalog);
         catalogRepository.save(catalog);
         productRepository.save(product);
     }

@@ -26,4 +26,8 @@ public class Product {
     )
     @JsonBackReference
     private List<Catalog> catalogs;
+
+    public void addCatalog(Catalog catalog) {
+        catalogs.add(catalog);
+    }
 }

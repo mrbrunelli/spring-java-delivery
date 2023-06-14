@@ -17,4 +17,8 @@ public class Catalog {
     @ManyToMany(mappedBy = "catalogs")
     @JsonManagedReference
     private List<Product> products;
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
 }
