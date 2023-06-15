@@ -1,7 +1,6 @@
 package dev.mrbrunelli.springjavadelivery.product;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dev.mrbrunelli.springjavadelivery.catalog.Catalog;
 import lombok.Data;
 

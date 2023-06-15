@@ -6,6 +6,7 @@ import dev.mrbrunelli.springjavadelivery.catalog.exception.CatalogNotFound;
 import dev.mrbrunelli.springjavadelivery.product.Product;
 import dev.mrbrunelli.springjavadelivery.product.ProductRepository;
 import dev.mrbrunelli.springjavadelivery.product.exception.ProductNotFound;
+import dev.mrbrunelli.springjavadelivery.shared.ConflictException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,10 +25,10 @@ public class AddProductToCatalog {
     public void execute(Long catalogId, Long productId) {
         Catalog catalog = catalogRepository.findById(catalogId).orElseThrow(CatalogNotFound::new);
         Product product = productRepository.findById(productId).orElseThrow(ProductNotFound::new);
+        if (catalog.existsAssociatedProduct(product)) {
+            throw new ConflictException("this product is already associated with this catalog");
+        }
         catalog.addProduct(product);
         product.addCatalog(catalog);
-        // TODO Check if the row exists in the table catalog_product or catch the ConstraintViolationException?
-        catalogRepository.save(catalog);
-        productRepository.save(product);
     }
 }

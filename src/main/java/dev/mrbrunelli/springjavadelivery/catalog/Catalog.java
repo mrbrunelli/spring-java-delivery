@@ -21,4 +21,8 @@ public class Catalog {
     public void addProduct(Product product) {
         products.add(product);
     }
+
+    public Boolean existsAssociatedProduct(Product product) {
+        return products.contains(product);
+    }
 }
