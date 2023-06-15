@@ -18,6 +18,7 @@ public class SaveNewProduct {
     @Transactional
     public ProductView execute(NewProductDTO dto) {
         Product product = dto.toProduct();
-        return ProductView.fromProduct(repository.save(product));
+        Product savedProduct = repository.save(product);
+        return ProductView.fromProduct(savedProduct);
     }
 }
