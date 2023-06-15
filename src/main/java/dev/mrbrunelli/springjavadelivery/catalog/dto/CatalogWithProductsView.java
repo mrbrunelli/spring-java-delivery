@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public class CatalogWithProductsView {
@@ -20,5 +21,11 @@ public class CatalogWithProductsView {
         catalog.getProducts()
                 .forEach(product -> catalogWithProductsView.getProducts().add(ProductView.fromProduct(product)));
         return catalogWithProductsView;
+    }
+
+    public static List<CatalogWithProductsView> fromCatalogList(List<Catalog> catalogs) {
+        return catalogs.stream()
+                .map(CatalogWithProductsView::fromCatalog)
+                .collect(Collectors.toList());
     }
 }

@@ -9,6 +9,6 @@ A list of essential product feature
 - [x] Create a new product
 - [x] Get created products
 - [x] Create a new catalog
-- [ ] Get catalogs and its products
+- [x] Get catalogs and its products
 - [x] Get a specific catalog and its products
 - [x] Associate a product in a catalog
