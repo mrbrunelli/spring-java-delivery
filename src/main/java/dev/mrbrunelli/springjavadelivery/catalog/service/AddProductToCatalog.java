@@ -7,19 +7,16 @@ import dev.mrbrunelli.springjavadelivery.product.Product;
 import dev.mrbrunelli.springjavadelivery.product.ProductRepository;
 import dev.mrbrunelli.springjavadelivery.product.exception.ProductNotFound;
 import dev.mrbrunelli.springjavadelivery.shared.ConflictException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
+@AllArgsConstructor
 public class AddProductToCatalog {
     private final CatalogRepository catalogRepository;
     private final ProductRepository productRepository;
-
-    public AddProductToCatalog(CatalogRepository catalogRepository, ProductRepository productRepository) {
-        this.catalogRepository = catalogRepository;
-        this.productRepository = productRepository;
-    }
 
     @Transactional
     public void execute(Long catalogId, Long productId) {
